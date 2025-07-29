@@ -6,7 +6,7 @@ data = {};
 fetch(ApiURL)
   .then((res) => res.json())
   .then((res) => {
-    Object.entries(res).map(([id, key]) => (data[id] = key));
+    res.map((item) => (data[item["imdb"]] = item));
   });
 
 const addon = new addonBuilder({
