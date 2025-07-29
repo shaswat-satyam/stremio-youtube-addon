@@ -1,0 +1,13 @@
+{
+  "name": "youtube-stremio-addon",
+  "version": "0.0.1",
+  "description": "This is an addon for streaming movies which are available on youtube.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "axios": "^1.11.0",
+    "stremio-addon-sdk": "^1.2.0"
+  }
+}
