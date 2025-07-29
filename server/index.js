@@ -9,7 +9,7 @@ app.use(cors());
 
 console.log("App Started");
 
-let mediaData = {};
+let mediaData = [];
 
 function readSavedData() {
   const file = "data.json";
@@ -19,7 +19,9 @@ function readSavedData() {
     }
     try {
       res = JSON.parse(data);
-      Object.entries(res).map(([id, key]) => (mediaData[id] = key));
+      res.forEach((element) => {
+        mediaData.push(element);
+      });
     } catch (parseErr) {
       console.error("Error parsing JSON data:", parseErr);
     }
@@ -64,11 +66,12 @@ app.get("/add", (req, res) => {
     (id != undefined) &
     (name != undefined)
   ) {
-    mediaData[imdbKey] = {
+    mediaData.append({
+      imdb: imdbKey,
       name: name,
       type: type,
       ytId: id,
-    };
+    });
     res.send("Added a new item");
   } else {
     res.send("Please provide imdbKey, type, id and name");
