@@ -2,14 +2,17 @@ import "./App.css";
 import { useEffect, useState } from "react";
 
 function App() {
-  const [data, setData] = useState({});
+  const [data, setData] = useState([]);
   useEffect(() => {
     fetch("http://localhost:8080/data")
       .then((response) => {
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
-        setData(response.json());
+        return response.json();
+      })
+      .then((data) => {
+        setData(data);
       })
       .catch((error) => {
         console.error("There was a problem with the fetch operation:", error);
@@ -38,62 +41,72 @@ function App() {
             Refresh
           </button>
         </div>
+        <button
+          onClick={() => {
+            console.log(data);
+          }}
+        >
+          Print
+        </button>
       </header>
+      <form
+        className="flex flex-row flex-col gap-2 p-5"
+        action="http://localhost:8080/movie"
+        method="POST"
+      >
+        <label>IMDB</label>
+        <input type="text" name="imdb" required={true} />
+
+        <label>Name</label>
+        <input type="text" name="name" />
+
+        <label>Type</label>
+        <input type="text" name="Type" value={"movie"} />
+
+        <label>ytId</label>
+        <input type="text" name="ytId" />
+
+        <input type="submit" />
+      </form>
       <h1 className="text-3xl font-bold underline text-clifford">Media</h1>
       <div className="w-full">
         <table className="py-5 w-full border-2 border-black gap-5">
           <thead className="text-center w-full text-white bg-green-700 text-bold text-xl font-bold">
-            <td>IMDB ID</td>
-            <td>Name</td>
-            <td>Type</td>
-            <td>ytID</td>
+            <tr>
+              <th>Poster</th>
+              <th>IMDB</th>
+              <th>Name</th>
+              <th>Type</th>
+              <th>ytID</th>
+            </tr>
           </thead>
           <tbody>
-            <form
-              onSubmit={(e) => {
-                e.preventDefault;
-                console.log(e.target.value);
-              }}
-            >
-              {Object.entries(data).map(([key, value]) => (
-                <tr className="text-center">
-                  <td>
-                    <input type="text" value={key} />
-                  </td>
-                  <td>
-                    <input type="text" placeholder={value["name"]} />
-                  </td>
-                  <td>
-                    <select>
-                      <option
-                        value={"ytId"}
-                        selected={"ytId" === value["type"]}
-                      >
-                        Youtube
-                      </option>
-                      <option
-                        value={"infoHash"}
-                        selected={"infoHash" === value["type"]}
-                      >
-                        Torrent
-                      </option>
-                      <option value={"url"} selected={"url" === value["type"]}>
-                        MP4 URL
-                      </option>
-                      <option
-                        value="externalUrl"
-                        selected={"externalUrl" == value["type"]}
-                      >
-                        External URL
-                      </option>
-                    </select>
-                  </td>
-                  <td>
-                    <input type="text" placeholder={value["ytId"]} />
-                  </td>
-                </tr>
-              ))}
-            </form>
+            {data.map((movie) => (
+              <tr className="text-center">
+                <td>
+                  <img
+                    src={
+                      "https://images.metahub.space/poster/medium/" +
+                      movie["imdb"] +
+                      "/img"
+                    }
+                    alt={movie["name"]}
+                    className="w-20 p-1 h-30 object-cover"
+                  />
+                </td>
+
+                <td>
+                  <input type="text" placeholder={movie["imdb"]} />
+                </td>
+                <td>
+                  <input type="text" placeholder={movie["name"]} />
+                </td>
+                <td>Movie</td>
+                <td>
+                  <input type="text" placeholder={movie["ytId"]} />
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>
