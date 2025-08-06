@@ -3,11 +3,14 @@ const { addonBuilder, serveHTTP } = require("stremio-addon-sdk");
 ApiURL = "http://localhost:8080/data"; // TODO: Update the URL when hosted
 
 data = {};
-fetch(ApiURL)
-  .then((res) => res.json())
-  .then((res) => {
-    res.map((item) => (data[item["imdb"]] = item));
-  });
+function getData() {
+  fetch(ApiURL)
+    .then((res) => res.json())
+    .then((res) => {
+      res.map((item) => (data[item["imdb"]] = item));
+    });
+}
+getData();
 
 const addon = new addonBuilder({
   id: "org.stremio.youtubemovie",
@@ -35,6 +38,8 @@ const generateMetaPreview = function (value, key) {
   // To provide basic meta for our movies for the catalog
   // we'll fetch the poster from Stremio's MetaHub
   // see https://github.com/Stremio/stremio-addon-sdk/blob/master/docs/api/responses/meta.md#meta-preview-object
+
+  getData();
   const imdbId = key.split(":")[0];
   return {
     id: imdbId,
