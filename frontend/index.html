@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="htmx-config" content='{"selfRequestsOnly": false}' />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/htmx.org@2.0.6/dist/htmx.min.js"
+      integrity="sha384-Akqfrbj/HpNVo8k11SXBb6TlBWmXXlYQrCSqEWmyKJe+hDm3Z/B2WVG4smwBkRVm"
+      crossorigin="anonymous"
+    ></script>
+    <title>Stremio Youtube Manager</title>
+  </head>
+  <body class="bg-gray-800 text-white flex flex-col p-5 h-screen">
+    <header class="flex flex-row justify-between w-full">
+      <div>
+        <h1 class="text-3xl">Stremio Youtube Manager</h1>
+      </div>
+      <div>
+        <button
+          class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          hx-get="http://localhost:8080/movies/new"
+          hx-target="#entries-list"
+          hx-swap="afterbegin"
+          hx-trigger="click"
+        >
+          Add new Entry
+        </button>
+      </div>
+    </header>
+    <main class="flex-1 mt-5">
+      <div
+        class="bg-gray-700 p-5 rounded-lg shadow-lg"
+        hx-get="http://localhost:8080/movies"
+        hx-target="#entries-list"
+        hx-trigger="load"
+      >
+        <div class="flex flex-row gap-10 mb-5">
+          <h2 class="text-xl mb-4">Entries</h2>
+          <input
+            type="text"
+            id="search-input"
+            placeholder="Search entries..."
+            class="p-2 rounded bg-gray-600 text-white w-full mb-4"
+            hx-get="http://localhost:8080/movies/search"
+            hx-target="#entries-list"
+            hx-trigger="keyup changed delay:500ms"
+            />
+        </div>
+
+      <details class="mb-5">
+        <summary>New Movie</summary>
+
+   <form hx-post="http://localhost:8080/movies"  hx-target="#entries-list" hx-swap="afterbegin" class="w-full flex justify-around space-y-4">
+      <label for="imdb">IMDB</label>
+      <input type="text" name="imdb"  placeholder="IMDB ID" />
+      <label for="name">Movie Name</label>
+      <input type="text" name="name"  placeholder="Movie Name" />
+      <label for="ytId">YouTube ID</label>
+      <input type="text" name="ytId"  placeholder="YouTube ID" required />
+      <button type="submit">Add Movie</button>
+    </form>
+
+      </details>
+        <div id="entries-list" class="grid grid-cols-2 gap-4">
+          <!-- Entries will be loaded here -->
+        </div>
+      </div>
+  </body>
+</html>
