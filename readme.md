@@ -1,5 +1,7 @@
 # Stremio Youtube Addon
 
+**Rustify the Code**
+
 This is a repo for an addon for Stremio to catalogue and stream the movies, series and anime which are uploaded to youtube.
 Disclaimer - Few Youtube Videos are not embeddable so they might not work.
 It has yet to be Deployed
