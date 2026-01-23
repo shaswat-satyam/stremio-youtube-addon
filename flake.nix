@@ -109,6 +109,7 @@
               wasm-bindgen-cli_0_2_100
               dioxus-cli
               sqlite
+              rustup
             ];
             shellHook = ''
               # For rust-analyzer 'hover' tooltips to work.
