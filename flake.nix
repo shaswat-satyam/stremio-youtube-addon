@@ -108,6 +108,7 @@
               rustToolchain
               wasm-bindgen-cli_0_2_100
               dioxus-cli
+              sqlite
             ];
             shellHook = ''
               # For rust-analyzer 'hover' tooltips to work.
@@ -115,6 +116,7 @@
               cargo -V
               dx --version
               node -v
+              sqlite3 --version
             '';
           };
         };

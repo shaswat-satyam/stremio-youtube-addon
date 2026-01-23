@@ -113,7 +113,7 @@ app.get("/movies/search", async (req, res) => {
       movies
         .filter((movie) => movie.imdb.includes(q) || movie.name.includes(q))
         .map((movie) => movieComponent(movie.imdb, movie.name, movie.ytId))
-        .join("")
+        .join(""),
     );
   } catch (err) {
     res.status(500).json({ error: err.message });
@@ -156,7 +156,7 @@ app.post("/movies", async (req, res) => {
       Error("Incomplete Data: imdb, name, ytId");
     } else if (name && !imdb) {
       const res = await fetch(
-        "https://www.omdbapi.com/?t=" + name + "&apikey=c12fea4a"
+        "https://www.omdbapi.com/?t=" + name + "&apikey=c12fea4a",
       );
       const data = await res.json();
       if (data.Response === "True") {
@@ -164,7 +164,7 @@ app.post("/movies", async (req, res) => {
       }
     } else if (!name && imdb) {
       const res = await fetch(
-        "https://www.omdbapi.com/?i=" + imdb + "&apikey=c12fea4a"
+        "https://www.omdbapi.com/?i=" + imdb + "&apikey=c12fea4a",
       );
       const data = await res.json();
       if (data.Response === "True") {
@@ -179,7 +179,7 @@ app.post("/movies", async (req, res) => {
       "INSERT INTO movies (imdb, name, ytId) VALUES (?, ?, ?)",
       imdb,
       name,
-      ytId
+      ytId,
     );
     res.send(movieComponent({ imdb, name, ytId }));
   } catch (err) {
@@ -199,7 +199,7 @@ app.patch("/movies", async (req, res) => {
       const result = await db.run(
         "UPDATE movies SET name = ? WHERE imdb = ?",
         name,
-        imdb
+        imdb,
       );
 
       res.status(201).json({ id: result.lastID, imdb, name, ytId });
@@ -207,7 +207,7 @@ app.patch("/movies", async (req, res) => {
       const result = await db.run(
         "UPDATE movies SET ytId = ? WHERE imdb = ?",
         ytId,
-        imdb
+        imdb,
       );
 
       res.status(201).json({ id: result.lastID, imdb, name, ytId });
