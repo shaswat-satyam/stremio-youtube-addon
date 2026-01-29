@@ -83,38 +83,34 @@
                 strictDeps = true;
                 buildInputs = rustBuildInputs;
                 nativeBuildInputs = with pkgs; [
-                  dioxus-cli
                   rustToolchain
                   rustPlatform.bindgenHook
                   wasm-bindgen-cli_0_2_100
+                  loco
+                  sea-orm-cli
                 ] ++ rustBuildInputs;
-                buildPhase = ''
-                  dx build --release --platform web
-                '';
-                installPhase = ''
-                  mkdir -p $out
-                  cp -r target/dx/$pname/release/web $out/bin
-                '';
                 cargoLock.lockFile = ./Cargo.lock;
                 meta.mainProgram = "server";
               };
           };
 
           devShells.default = pkgs.mkShell {
-            name = "dioxus-dev";
+            name = "loco-dev";
             buildInputs = rustBuildInputs;
             nativeBuildInputs = with pkgs; [
               # Add shell dependencies here
               rustToolchain
               wasm-bindgen-cli_0_2_100
-              dioxus-cli
+              loco
+              sea-orm-cli
             ];
             shellHook = ''
               # For rust-analyzer 'hover' tooltips to work.
               export RUST_SRC_PATH="${rustToolchain}/lib/rustlib/src/rust/library";
               cargo -V
-              dx --version
+              loco --version
               node -v
+              sea-orm-cli -V
             '';
           };
         };
