@@ -3,5 +3,8 @@
 pub mod prelude;
 
 pub mod movies;
+pub mod name_strings;
+pub mod seasons;
+pub mod series;
 pub mod tvs;
 pub mod users;
