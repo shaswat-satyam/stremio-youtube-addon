@@ -1,5 +1,6 @@
 pub mod auth;
 
+pub mod api;
 pub mod episode;
 pub mod home;
 pub mod movie;
