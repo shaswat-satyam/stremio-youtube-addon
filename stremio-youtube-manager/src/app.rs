@@ -12,6 +12,8 @@ use loco_rs::{
 };
 use migration::Migrator;
 use std::path::Path;
+use crate::models::_entities::*;
+use crate::models::{episodes,movies,tvs,seasons};
 
 #[allow(unused_imports)]
 use crate::{
@@ -73,8 +75,12 @@ impl Hooks for App {
         Ok(())
     }
     async fn seed(ctx: &AppContext, base: &Path) -> Result<()> {
-        db::seed::<users::ActiveModel>(&ctx.db, &base.join("users.yaml").display().to_string())
-            .await?;
+        db::seed::<users::ActiveModel>(&ctx.db, &base.join("users.yaml").display().to_string()).await?;
+        db::seed::<movies::ActiveModel>(&ctx.db, &base.join("movies.yaml").display().to_string()).await?;
+        db::seed::<tvs::ActiveModel>(&ctx.db, &base.join("tvs.yaml").display().to_string()).await?;
+        db::seed::<series::ActiveModel>(&ctx.db, &base.join("series.yaml").display().to_string()).await?;
+        db::seed::<seasons::ActiveModel>(&ctx.db, &base.join("seasons.yaml").display().to_string()).await?;
+        db::seed::<episodes::ActiveModel>(&ctx.db, &base.join("episodes.yaml").display().to_string()).await?;
         Ok(())
     }
 }

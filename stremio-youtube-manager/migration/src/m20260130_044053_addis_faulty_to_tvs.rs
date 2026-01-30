@@ -1,4 +1,4 @@
-use sea_orm_migration::{prelude::*, schema::*};
+use sea_orm_migration::prelude::*;
 use loco_rs::schema::{add_column, remove_column, ColType};
 
 #[derive(DeriveMigrationName)]
