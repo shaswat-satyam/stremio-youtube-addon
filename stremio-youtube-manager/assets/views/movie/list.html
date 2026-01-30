@@ -1,5 +1,5 @@
 {% extends "base.html" %} {% block title %} List of movie {% endblock title %}
-{% block page_title %} movie {% endblock page_title %} {% block content %}
+{% block page_title %} Movies {% endblock page_title %} {% block content %}
 <div class="mb-10">
   {% if items %}
 
@@ -59,7 +59,12 @@
           {% for item in items %}
           <tr class="border-b transition-colors hover:bg-muted/50">
             <td class="p-2 align-middle font-medium">
-              {{item.youtube_id | default(value="") | escape }}
+              <a
+                href="https://www.youtube.com/watch?v={{item.youtube_id}}"
+                target="_blank"
+              >
+                {{item.youtube_id | default(value="") | escape }}
+              </a>
             </td>
             <td class="p-2 align-middle font-medium">
               {{item.imdb_id | default(value="No Imdb") | escape }}
@@ -74,7 +79,7 @@
               {{item.images | default(value="No Images") | escape }}
             </td>
             <td class="p-2 align-middle font-medium">
-              {{item.is_faulty | default(value="Not Faulty") | escape }}
+              {{item.is_faulty | default(value="false") }}
             </td>
             <td class="p-2 align-middle font-medium">
               {{item.genre | default(value="No Genre") | escape }}
@@ -89,6 +94,29 @@
           {% endfor %}
         </tbody>
       </table>
+    </div>
+    <div class="pt-5 flex flex-wrap gap-10">
+      {% for item in items %}
+      <div class="">
+        {% if item.is_faulty == true %}
+        <p>Please repair or delete</p>
+        {% endif %}
+        <img
+          class="h-64"
+          src="https://images.metahub.space/poster/medium/{{
+                  item.imdb_id
+                }}/img"
+        />
+        <p>
+          <a
+            href="https://www.youtube.com/watch?v={{item.youtube_id}}"
+            target="_blank"
+          >
+            {{item.name}}
+          </a>
+        </p>
+      </div>
+      {% endfor %}
     </div>
 
     <div class="flex">
