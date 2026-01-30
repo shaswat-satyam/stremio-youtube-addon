@@ -108,12 +108,15 @@
                 }}/img"
         />
         <p>
-          <a
-            href="https://www.youtube.com/watch?v={{item.youtube_id}}"
-            target="_blank"
+          <b>
+            <a
+              href="https://www.youtube.com/watch?v={{item.youtube_id}}"
+              target="_blank"
+            >
+              {{item.name}}
+            </a></b
           >
-            {{item.name}}
-          </a>
+          <a href="/movies/{{ item.id }}/edit">Edit</a>
         </p>
       </div>
       {% endfor %}
