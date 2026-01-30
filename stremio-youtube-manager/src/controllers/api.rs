@@ -5,12 +5,31 @@ use loco_rs::prelude::*;
 
 use sea_orm::{Order,QueryOrder};
 use crate::{
-    models::_entities::movies::{ Column, Entity, Model},
+    models::_entities::{
+        movies::{ Column as MovieColumn,
+                  Entity as MovieEntity,
+                  Model as MovieModel,
+                },
+        tvs::{ Column as TvColumn,
+               Entity as TvEntity,
+               Model as TvModel,
+            },
+        series::{ Column as SeriesColumn,
+                  Entity as SeriesEntity,
+                  Model as SeriesModel,
+                },
+        seasons::{ Column as SeasonColumn,
+                   Entity as SeasonEntity,
+                   Model  as SeasonModel,
+                } ,
+        episodes::{ Column as EpisodeColumn,
+                    Entity as EpisodeEntity,
+                    Model as EpisodeModel
+                },
+}
 };
-// use crate::models::episodes;
-// use crate::models::seasons;
-// use crate::models::series::Model;
-// use crate::models::series;
+
+
 
 use serde::Serialize;
 
@@ -48,8 +67,8 @@ pub async fn index() -> Result<Response> {
 pub async fn movies(
     State(ctx): State<AppContext>
 ) -> Result<Response> {
-    let movies = Entity::find()
-        .order_by(Column::Id, Order::Desc)
+    let movies = MovieEntity::find()
+        .order_by(MovieColumn::Id, Order::Desc)
         .all(&ctx.db)
         .await?;
     format::json(ApiResponse::ok(movies))
@@ -60,71 +79,73 @@ pub async fn movie(
     Path(imdb_id): Path<String>,
     State(ctx): State<AppContext>,
 ) -> Result<Response> {
-    let movies = Entity::find()
-        .filter(Column::ImdbId.eq(imdb_id))
+    let movies = MovieEntity::find()
+        .filter(MovieColumn::ImdbId.eq(imdb_id))
+        .order_by(TvColumn::UpdatedAt, Order::Desc)
         .all(&ctx.db)
         .await?;
 
     if movies.is_empty() {
-        format::json(ApiResponse::<Vec<Model>>::err("Movie not found"))
+        format::json(ApiResponse::<Vec<MovieModel>>::err("Movie not found"))
     } else {
         format::json(ApiResponse::ok(movies))
     }
 }
 
-// pub async fn tvs(
-//     ViewEngine(v): ViewEngine<TeraView>,
-//     State(ctx): State<AppContext>
-// ) -> Result<Response> {
-//     let tvs = tvs::find()
-//                     .order_by_desc(column::updatedate)
-//                     .all(&ctx.db)
-//                     .await?;
-//     format::json(apiresponse::success(tvs))
+pub async fn tvs(
+    State(ctx): State<AppContext>
+) -> Result<Response> {
+    let tvs = TvEntity::find()
+                    .order_by(TvColumn::UpdatedAt, Order::Desc)
+                    .all(&ctx.db)
+                    .await?;
 
-// }
+    format::json(ApiResponse::ok(tvs))
 
-// pub async fn tv(
-//     Path(id): Path<i32>,
-//     ViewEngine(v): ViewEngine<TeraView>,
-//     State(ctx): State<AppContext>
-// ) -> Result<Response> {
-//     let tv = tvs::find_by_id(&id)
-//                     .one(&ctx.db)
-//                     .await?;
-//     match tv {
-//         Some(tv) => format::json(apiresponse::success(tv)),
-//         None => format::json(apiresponse::<Model>::error("TV Channel not found")),
-//     }
+}
 
-// }
+pub async fn tv(
+    Path(name): Path<String>,
+    State(ctx): State<AppContext>
+) -> Result<Response> {
+    let tvs = TvEntity::find()
+        .filter(TvColumn::Name.eq(name))
+        .all(&ctx.db)
+        .await?;
 
-// pub async fn series(
-//     ViewEngine(v): ViewEngine<TeraView>,
-//     State(ctx): State<AppContext>,
-// ) -> Result<Response> {
-//     let series = series::find()
-//                     .order_by_desc(column::updatedate)
-//                     .all(&ctx.db)
-//                     .await?;
-//     format::json(apiresponse::success(series))
+    if tvs.is_empty() {
+        format::json(ApiResponse::<Vec<TvModel>>::err("TV Channel not found"))
+    } else {
+        format::json(ApiResponse::ok(tvs))
+    }
 
-// }
+}
 
-// pub async fn specific_series(
-//     Path(id): Path<i32>,
-//     ViewEngine(v): ViewEngine<TeraView>,
-//     State(ctx): State<AppContext>
-// ) -> Result<Response> {
-//     let specific_series = series::find_by_id(&id)
-//                     .one(&ctx.db)
-//                     .await?;
-//     match specific_series {
-//         Some(specific_series) => format::json(apiresponse::success(specific_series)),
-//         None => format::json(apiresponse::<Model>::error("Specific Series is not found")),
-//     }
+pub async fn series(
+    State(ctx): State<AppContext>,
+) -> Result<Response> {
+    let series = SeriesEntity::find()
+                    .order_by(SeriesColumn::UpdatedAt,Order::Desc)
+                    .all(&ctx.db)
+                    .await?;
+    format::json(ApiResponse::ok(series))
+}
 
-// }
+pub async fn specific_series(
+    Path(imdb_id): Path<String>,
+    State(ctx): State<AppContext>
+) -> Result<Response> {
+    let specific_series = SeriesEntity::find()
+                    .filter(SeriesColumn::ImdbId.eq(imdb_id))
+                    .all(&ctx.db)
+                    .await?;
+    if specific_series.is_empty() {
+        format::json(ApiResponse::<Vec<SeriesModel>>::err("Series not found"))
+    } else {
+        format::json(ApiResponse::ok(specific_series))
+    }
+
+}
 
 pub fn routes() -> Routes {
     Routes::new()
@@ -132,8 +153,8 @@ pub fn routes() -> Routes {
         .add("/", get(index))
         .add("/movies", get(movies))
         .add("/movie/{id}", get(movie))
-        // .add("/tv", get(tvs))
-        // .add("/tv/{id}", get(tv))
-        // .add("/series", get(series))
-        // .add("/series/{id}", get(specific_series))
+        .add("/tvs", get(tvs))
+        .add("/tv/{id}", get(tv))
+        .add("/series", get(series))
+        .add("/series/{id}", get(specific_series))
 }
