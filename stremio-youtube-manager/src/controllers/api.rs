@@ -137,9 +137,16 @@ pub async fn specific_series(
 ) -> Result<Response> {
     let specific_series = SeriesEntity::find()
                     .filter(SeriesColumn::ImdbId.eq(imdb_id))
+                    .find_with_related(SeasonEntity)
                     .all(&ctx.db)
                     .await?;
-    if specific_series.is_empty() {
+    let season_ids = specific_series.iter().map(|(_,seasons) seasons.iter().map(|s| s.id)).collect();
+    let episodes = EpisodeEntity::find()
+        .filter(EpisodeColumn::SeasonId.is_in(season_ids))
+        .all(&ctx.db)
+        .await?;
+
+    if episodes.is_empty() {
         format::json(ApiResponse::<Vec<SeriesModel>>::err("Series not found"))
     } else {
         format::json(ApiResponse::ok(specific_series))
