@@ -1,5 +1,5 @@
+pub use super::_entities::seasons::{ActiveModel, Entity, Model};
 use sea_orm::entity::prelude::*;
-pub use super::_entities::seasons::{ActiveModel, Model, Entity};
 pub type Seasons = Entity;
 
 #[async_trait::async_trait]

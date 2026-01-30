@@ -1,6 +1,6 @@
-use stremio_youtube_manager::app::App;
 use loco_rs::testing::prelude::*;
 use serial_test::serial;
+use stremio_youtube_manager::app::App;
 
 macro_rules! configure_insta {
     ($($expr:expr),*) => {

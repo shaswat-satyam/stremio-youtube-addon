@@ -1,11 +1,11 @@
 #![allow(clippy::missing_errors_doc)]
 #![allow(clippy::unnecessary_struct_initialization)]
 #![allow(clippy::unused_async)]
-use loco_rs::prelude::*;
-use serde::{Deserialize, Serialize};
 use axum::response::Redirect;
 use axum_extra::extract::Form;
+use loco_rs::prelude::*;
 use sea_orm::{sea_query::Order, QueryOrder};
+use serde::{Deserialize, Serialize};
 
 use crate::{
     models::_entities::series::{ActiveModel, Column, Entity, Model},
@@ -17,14 +17,14 @@ pub struct Params {
     pub name: Option<String>,
     pub imdb_id: Option<String>,
     pub youtube_playlist_id: Option<String>,
-    }
+}
 
 impl Params {
     fn update(&self, item: &mut ActiveModel) {
-      item.name = Set(self.name.clone());
-      item.imdb_id = Set(self.imdb_id.clone());
-      item.youtube_playlist_id = Set(self.youtube_playlist_id.clone());
-      }
+        item.name = Set(self.name.clone());
+        item.imdb_id = Set(self.imdb_id.clone());
+        item.youtube_playlist_id = Set(self.youtube_playlist_id.clone());
+    }
 }
 
 async fn load_item(ctx: &AppContext, id: i32) -> Result<Model> {
@@ -86,10 +86,7 @@ pub async fn show(
 }
 
 #[debug_handler]
-pub async fn add(
-    State(ctx): State<AppContext>,
-    Form(params): Form<Params>,
-) -> Result<Redirect> {
+pub async fn add(State(ctx): State<AppContext>, Form(params): Form<Params>) -> Result<Redirect> {
     let mut item = ActiveModel {
         ..Default::default()
     };

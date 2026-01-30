@@ -1,5 +1,5 @@
+pub use super::_entities::tvs::{ActiveModel, Entity, Model};
 use sea_orm::entity::prelude::*;
-pub use super::_entities::tvs::{ActiveModel, Model, Entity};
 pub type Tvs = Entity;
 
 #[async_trait::async_trait]

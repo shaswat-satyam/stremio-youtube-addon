@@ -1,11 +1,11 @@
 #![allow(clippy::missing_errors_doc)]
 #![allow(clippy::unnecessary_struct_initialization)]
 #![allow(clippy::unused_async)]
-use loco_rs::prelude::*;
-use serde::{Deserialize, Serialize};
 use axum::response::Redirect;
 use axum_extra::extract::Form;
+use loco_rs::prelude::*;
 use sea_orm::{sea_query::Order, QueryOrder};
+use serde::{Deserialize, Serialize};
 
 use crate::{
     models::_entities::movies::{ActiveModel, Column, Entity, Model},
@@ -22,19 +22,19 @@ pub struct Params {
     pub is_faulty: Option<bool>,
     pub genre: Option<String>,
     pub description: Option<String>,
-    }
+}
 
 impl Params {
     fn update(&self, item: &mut ActiveModel) {
-      item.youtube_id = Set(self.youtube_id.clone());
-      item.imdb_id = Set(self.imdb_id.clone());
-      item.name = Set(self.name.clone());
-      item.actors = Set(self.actors.clone());
-      item.images = Set(self.images.clone());
-      item.is_faulty = Set(self.is_faulty);
-      item.genre = Set(self.genre.clone());
-      item.description = Set(self.description.clone());
-      }
+        item.youtube_id = Set(self.youtube_id.clone());
+        item.imdb_id = Set(self.imdb_id.clone());
+        item.name = Set(self.name.clone());
+        item.actors = Set(self.actors.clone());
+        item.images = Set(self.images.clone());
+        item.is_faulty = Set(self.is_faulty);
+        item.genre = Set(self.genre.clone());
+        item.description = Set(self.description.clone());
+    }
 }
 
 async fn load_item(ctx: &AppContext, id: i32) -> Result<Model> {
@@ -96,10 +96,7 @@ pub async fn show(
 }
 
 #[debug_handler]
-pub async fn add(
-    State(ctx): State<AppContext>,
-    Form(params): Form<Params>,
-) -> Result<Redirect> {
+pub async fn add(State(ctx): State<AppContext>, Form(params): Form<Params>) -> Result<Redirect> {
     let mut item = ActiveModel {
         ..Default::default()
     };

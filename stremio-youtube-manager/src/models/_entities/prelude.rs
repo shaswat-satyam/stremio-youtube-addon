@@ -2,7 +2,6 @@
 
 pub use super::episodes::Entity as Episodes;
 pub use super::movies::Entity as Movies;
-pub use super::name_strings::Entity as NameStrings;
 pub use super::seasons::Entity as Seasons;
 pub use super::series::Entity as Series;
 pub use super::tvs::Entity as Tvs;

@@ -1,8 +1,8 @@
 mod users;
 
-mod tvs;
-mod movies;
-mod series;
-mod seasons;
-mod name_strings;
 mod episodes;
+mod movies;
+mod name_strings;
+mod seasons;
+mod series;
+mod tvs;

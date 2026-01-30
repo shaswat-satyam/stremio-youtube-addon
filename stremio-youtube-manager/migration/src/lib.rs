@@ -9,6 +9,9 @@ mod m20260130_035707_series;
 mod m20260130_040057_seasons;
 mod m20260130_040502_name_strings;
 mod m20260130_040936_episodes;
+mod m20260130_043022_add_is_faulty_to_movies;
+mod m20260130_044053_addis_faulty_to_tvs;
+mod m20260130_045144_addis_faulty_to_episodes;
 pub struct Migrator;
 
 #[async_trait::async_trait]
@@ -22,6 +25,9 @@ impl MigratorTrait for Migrator {
             Box::new(m20260130_040057_seasons::Migration),
             Box::new(m20260130_040502_name_strings::Migration),
             Box::new(m20260130_040936_episodes::Migration),
+            Box::new(m20260130_043022_add_is_faulty_to_movies::Migration),
+            Box::new(m20260130_044053_addis_faulty_to_tvs::Migration),
+            Box::new(m20260130_045144_addis_faulty_to_episodes::Migration),
             // inject-above (do not remove this comment)
         ]
     }

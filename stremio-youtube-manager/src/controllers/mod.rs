@@ -1,8 +1,8 @@
 pub mod auth;
 
-pub mod tv;
-pub mod movie;
-pub mod home;
-pub mod series;
-pub mod season;
 pub mod episode;
+pub mod home;
+pub mod movie;
+pub mod season;
+pub mod series;
+pub mod tv;

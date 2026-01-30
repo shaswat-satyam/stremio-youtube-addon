@@ -4,7 +4,6 @@ pub mod prelude;
 
 pub mod episodes;
 pub mod movies;
-pub mod name_strings;
 pub mod seasons;
 pub mod series;
 pub mod tvs;
