@@ -62,25 +62,25 @@
               {{item.youtube_id | default(value="") | escape }}
             </td>
             <td class="p-2 align-middle font-medium">
-              {{item.imdb_id | default(value="") | escape }}
+              {{item.imdb_id | default(value="No Imdb") | escape }}
             </td>
             <td class="p-2 align-middle font-medium">
-              {{item.name | default(value="") | escape }}
+              {{item.name | default(value="No Title") | escape }}
             </td>
             <td class="p-2 align-middle font-medium">
-              {{item.actors | default(value="") | escape }}
+              {{item.actors | default(value="No Actors") | escape }}
             </td>
             <td class="p-2 align-middle font-medium">
-              {{item.images | default(value="") | escape }}
+              {{item.images | default(value="No Images") | escape }}
             </td>
             <td class="p-2 align-middle font-medium">
-              {{item.is_faulty | default(value="") | escape }}
+              {{item.is_faulty | default(value="Not Faulty") | escape }}
             </td>
             <td class="p-2 align-middle font-medium">
-              {{item.genre | default(value="") | escape }}
+              {{item.genre | default(value="No Genre") | escape }}
             </td>
             <td class="p-2 align-middle font-medium">
-              {{item.description | default(value="") | escape }}
+              {{item.description | default(value="No Description") | escape }}
             </td>
             <td>
               <a href="/movies/{{ item.id }}/edit">Edit</a>
