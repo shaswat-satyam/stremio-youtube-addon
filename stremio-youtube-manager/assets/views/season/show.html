@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}
+View season: {{ item.id }}
+{% endblock title %}
+
+{% block content %}
+<h1>View season: {{ item.id }}</h1>
+<div class="mb-10">
+<div>
+        <label>season_number: {{item.season_number}}</label>
+    </div>
+<div>
+        <label>series_id: {{item.series_id}}</label>
+    </div>
+<div>
+        <label>season_youtube_playlist: {{item.season_youtube_playlist}}</label>
+    </div>
+<br />
+<a href="/seasons">Back to seasons</a>
+</div>
+{% endblock content %}
