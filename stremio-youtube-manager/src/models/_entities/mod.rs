@@ -2,6 +2,7 @@
 
 pub mod prelude;
 
+pub mod episodes;
 pub mod movies;
 pub mod name_strings;
 pub mod seasons;

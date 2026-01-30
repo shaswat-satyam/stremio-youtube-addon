@@ -8,6 +8,7 @@ mod m20260129_190449_movies;
 mod m20260130_035707_series;
 mod m20260130_040057_seasons;
 mod m20260130_040502_name_strings;
+mod m20260130_040936_episodes;
 pub struct Migrator;
 
 #[async_trait::async_trait]
@@ -20,6 +21,7 @@ impl MigratorTrait for Migrator {
             Box::new(m20260130_035707_series::Migration),
             Box::new(m20260130_040057_seasons::Migration),
             Box::new(m20260130_040502_name_strings::Migration),
+            Box::new(m20260130_040936_episodes::Migration),
             // inject-above (do not remove this comment)
         ]
     }
