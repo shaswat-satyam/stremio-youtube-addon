@@ -103,14 +103,16 @@
               wasm-bindgen-cli_0_2_100
               loco
               sea-orm-cli
+              nodejs_25
+              nodemon
             ];
             shellHook = ''
               # For rust-analyzer 'hover' tooltips to work.
               export RUST_SRC_PATH="${rustToolchain}/lib/rustlib/src/rust/library";
               cargo -V
               loco --version
-              node -v
               sea-orm-cli -V
+              node -v
             '';
           };
         };

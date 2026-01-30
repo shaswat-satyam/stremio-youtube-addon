@@ -81,7 +81,7 @@ pub async fn movie(
 ) -> Result<Response> {
     let movies = MovieEntity::find()
         .filter(MovieColumn::ImdbId.eq(imdb_id))
-        .order_by(TvColumn::UpdatedAt, Order::Desc)
+        .order_by(MovieColumn::UpdatedAt, Order::Desc)
         .all(&ctx.db)
         .await?;
 
@@ -105,20 +105,17 @@ pub async fn tvs(
 }
 
 pub async fn tv(
-    Path(name): Path<String>,
+    Path(Id): Path<i32>,
     State(ctx): State<AppContext>
 ) -> Result<Response> {
-    let tvs = TvEntity::find()
-        .filter(TvColumn::Name.eq(name))
-        .all(&ctx.db)
+    let tv = TvEntity::find_by_id(Id)
+        .one(&ctx.db)
         .await?;
 
-    if tvs.is_empty() {
-        format::json(ApiResponse::<Vec<TvModel>>::err("TV Channel not found"))
-    } else {
-        format::json(ApiResponse::ok(tvs))
+    match tv{
+       Some(tv)  => format::json(ApiResponse::ok(tv)),
+       None => format::json(ApiResponse::<Vec<TvModel>>::err("TV Channel not found")),
     }
-
 }
 
 pub async fn series(
@@ -140,13 +137,16 @@ pub async fn specific_series(
                     .find_with_related(SeasonEntity)
                     .all(&ctx.db)
                     .await?;
-    let season_ids = specific_series.iter().map(|(_,seasons) seasons.iter().map(|s| s.id)).collect();
-    let episodes = EpisodeEntity::find()
-        .filter(EpisodeColumn::SeasonId.is_in(season_ids))
-        .all(&ctx.db)
-        .await?;
+    // let season_ids = specific_series
+    // .iter()
+    // .map(|(_,seasons) seasons.iter().map(|s| s.id))
+    // .collect();
+    // let episodes = EpisodeEntity::find()
+    //     .filter(EpisodeColumn::SeasonId.is_in(season_ids))
+    //     .all(&ctx.db)
+    //     .await?;
 
-    if episodes.is_empty() {
+    if specific_series.is_empty() {
         format::json(ApiResponse::<Vec<SeriesModel>>::err("Series not found"))
     } else {
         format::json(ApiResponse::ok(specific_series))
