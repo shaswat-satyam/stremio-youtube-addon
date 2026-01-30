@@ -13,15 +13,15 @@ const manifest = {
   catalogs: [
     {
       type: "movie",
-      id: "Youtube-Media-Movies",
+      id: "Youtube",
     },
     {
       type: "series",
-      id: "Youtube-Media-Series",
+      id: "Youtube",
     },
     {
       type: "tv",
-      id: "Youtube-Media-tv",
+      id: "Youtube",
     },
   ],
   idPrefixes: ["tt", "youtube-tv-channel-"],
@@ -138,7 +138,7 @@ async function getStreamsFromDatabaseForParticularId(id, type, name) {
   const result = await response.json();
 
   return result.data.map((r) => ({
-    id: r.id.split("-").at(-1),
+    id: r.id,
     title: "Live Stream",
     youtube_id: r.youtube_id,
     imdb: r.imdb_id,
@@ -150,15 +150,21 @@ builder.defineStreamHandler(async ({ id, type }) => {
   if (type == "tv") {
     streamsFromDB = await getStreamsFromDatabaseForParticularId(id, type);
     return {
-      id: id,
-      title: "from youtube " + type,
-      ytId: streamsFromDB.youtube_id,
-      name: streamsFromDB.name,
-      type: "tv",
-      name: streamsFromDB.title,
-      behaviorHints: {
-        notWebReady: true,
-      },
+      streams: [
+        {
+          id: id,
+          title: "from youtube " + type,
+          ytId: streamsFromDB.youtube_id,
+          name: streamsFromDB.name,
+          type: "tv",
+          name: streamsFromDB.title,
+          url: "https://abplivetv.akamaized.net/hls/live/2043010/hindi/master.m3u8",
+          behaviorHints: {
+            notWebReady: true,
+            isLive: true,
+          },
+        },
+      ],
     };
   } else {
     streamsFromDB = await getStreamsFromDatabaseForParticularId(id, type);
