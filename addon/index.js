@@ -1,24 +1,13 @@
 const { addonBuilder, serveHTTP } = require("stremio-addon-sdk");
+const env = require("env");
 
-ApiURL = "http://localhost:8080/data"; // TODO: Update the URL when hosted
-
-data = {};
-function getData() {
-  fetch(ApiURL)
-    .then((res) => res.json())
-    .then((res) => {
-      res.map((item) => (data[item["imdb"]] = item));
-    });
-}
-getData();
-
-const addon = new addonBuilder({
-  id: "org.stremio.youtubemovie",
+const manifest = {
+  id: "org.stremio.youtube-media",
   name: "Youtube Media",
   version: "1.0.0",
   description: "Watch Youtube Media available on youtube",
-  resources: ["catalog", "stream"],
-  types: ["movie", "series"],
+  resources: ["catalog", "stream", "meta"],
+  types: ["movie", "series", "tv"],
   catalogs: [
     {
       type: "movie",
@@ -30,7 +19,10 @@ const addon = new addonBuilder({
     },
   ],
   idPrefixes: ["tt"],
-});
+};
+
+const builder = new addonBuilder(manifest);
+const baseAPIurl = env["baseAPIurl"];
 
 const METAHUB_URL = "https://images.metahub.space";
 
@@ -49,7 +41,7 @@ const generateMetaPreview = function (value, key) {
   };
 };
 
-addon.defineCatalogHandler(function (args, cb) {
+builder.defineCatalogHandler(function (args, cb) {
   // filter the dataset object and only take the requested type
   const metas = Object.entries(data)
     .filter(([_, value]) => value.type === args.type)
@@ -58,11 +50,33 @@ addon.defineCatalogHandler(function (args, cb) {
   return Promise.resolve({ metas: metas });
 });
 
-addon.defineStreamHandler(function (args) {
-  if (data[args.id]) {
-    return Promise.resolve({ streams: [data[args.id]] });
-  } else {
-    return Promise.resolve({ streams: [] });
+async function getStreamsFromDatabase(id, type) {
+  const response = await fetch(`${ApiURL}/${type}?id=${id}`);
+
+  if (!response.ok) {
+    console.error("Failed to fetch streams:", response.statusText);
+    return [];
   }
+
+  const results = await response.json();
+
+  return results.map((r) => ({
+    id: r._id.toString(),
+    youtube_id: r.youtube_id,
+    imdb: r.imdb_id,
+  }));
+}
+
+builder.defineStreamHandler(async ({ id, type }) => {
+  const streamsFromDB = await getStreamsFromDatabase(id, type);
+  const streams = streamsFromDB.map((stream) => ({
+    id: stream.id,
+    imdb: stream.imdb_id,
+    title: "from Youtube " + type,
+    ytId: stream.youtube_id,
+    type: type,
+  }));
+  return { streams };
 });
-serveHTTP(addon.getInterface(), { port: 7001 });
+
+serveHTTP(builder.getInterface(), { port: 7001 });
