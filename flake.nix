@@ -113,6 +113,7 @@
               loco --version
               sea-orm-cli -V
               node -v
+              sqlite3 --version
             '';
           };
         };
