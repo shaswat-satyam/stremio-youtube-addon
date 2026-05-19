@@ -1,58 +1,24 @@
-# Welcome to Loco :train:
+# README
 
-[Loco](https://loco.rs) is a web and API framework running on Rust.
+This README would normally document whatever steps are necessary to get the
+application up and running.
 
-This is the **SaaS starter** which includes a `User` model and authentication based on JWT.
-It also include configuration sections that help you pick either a frontend or a server-side template set up for your fullstack server.
+Things you may want to cover:
 
+* Ruby version
 
-## Quick Start
+* System dependencies
 
-```sh
-cargo loco start
-```
+* Configuration
 
-```sh
-$ cargo loco start
-Finished dev [unoptimized + debuginfo] target(s) in 21.63s
-    Running `target/debug/myapp start`
+* Database creation
 
-    :
-    :
-    :
+* Database initialization
 
-controller/app_routes.rs:203: [Middleware] Adding log trace id
+* How to run the test suite
 
-                      ▄     ▀
-                                 ▀  ▄
-                  ▄       ▀     ▄  ▄ ▄▀
-                                    ▄ ▀▄▄
-                        ▄     ▀    ▀  ▀▄▀█▄
-                                          ▀█▄
-▄▄▄▄▄▄▄  ▄▄▄▄▄▄▄▄▄   ▄▄▄▄▄▄▄▄▄▄▄ ▄▄▄▄▄▄▄▄▄ ▀▀█
- ██████  █████   ███ █████   ███ █████   ███ ▀█
- ██████  █████   ███ █████   ▀▀▀ █████   ███ ▄█▄
- ██████  █████   ███ █████       █████   ███ ████▄
- ██████  █████   ███ █████   ▄▄▄ █████   ███ █████
- ██████  █████   ███  ████   ███ █████   ███ ████▀
-   ▀▀▀██▄ ▀▀▀▀▀▀▀▀▀▀  ▀▀▀▀▀▀▀▀▀▀  ▀▀▀▀▀▀▀▀▀▀ ██▀
-       ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
-                https://loco.rs
+* Services (job queues, cache servers, search engines, etc.)
 
-environment: development
-   database: automigrate
-     logger: debug
-compilation: debug
-      modes: server
+* Deployment instructions
 
-listening on http://localhost:5150
-```
-
-## Full Stack Serving
-
-You can check your [configuration](config/development.yaml) to pick either frontend setup or server-side rendered template, and activate the relevant configuration sections.
-
-
-## Getting help
-
-Check out [a quick tour](https://loco.rs/docs/getting-started/tour/) or [the complete guide](https://loco.rs/docs/getting-started/guide/).
+* ...
