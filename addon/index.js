@@ -82,7 +82,7 @@ builder.defineCatalogHandler(async (args, cb) => {
 });
 async function getStreamsFromDatabase(type) {
   console.log("Base API Url:", BaseAPIurl);
-  console.log("Local API Url:", LocalAPIurl);
+  //console.log("Local API Url:", LocalAPIurl);
   
   let response;
   try {
