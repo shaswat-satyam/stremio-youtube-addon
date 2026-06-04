@@ -1,10 +1,293 @@
-<p style="color: green"><%= notice %></p>
 
-<%= render @movie %>
+<% content_for :title, @movie.title %>
 
-<div>
-  <%= link_to "Edit this movie", edit_movie_path(@movie) %> |
-  <%= link_to "Back to movies", movies_path %>
+<style>
+  .movie-show {
+    max-width: 960px;
+    margin: 0 auto;
+  }
 
-  <%= button_to "Destroy this movie", @movie, method: :delete %>
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: #666;
+    text-decoration: none;
+    font-size: 0.85rem;
+    margin-bottom: 1.5rem;
+    transition: color 0.2s;
+  }
+
+  .back-link:hover { color: #fff; }
+
+  .movie-layout {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: 2rem;
+    align-items: start;
+  }
+
+  /* Poster */
+  .movie-poster-wrap {
+    position: sticky;
+    top: 80px;
+  }
+
+  .movie-poster {
+    width: 100%;
+    border-radius: 10px;
+    display: block;
+    border: 1px solid #222;
+  }
+
+  .movie-poster-placeholder {
+    width: 100%;
+    aspect-ratio: 2/3;
+    background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4rem;
+    border: 1px solid #222;
+  }
+
+  .fetch-btn {
+    display: block;
+    width: 100%;
+    margin-top: 0.75rem;
+    text-align: center;
+    background: #1a1a1a;
+    color: #888;
+    border: 1px solid #333;
+    padding: 0.5rem;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+
+  .fetch-btn:hover { color: #fff; border-color: #555; }
+
+  /* Right side */
+  .movie-info { display: flex; flex-direction: column; gap: 1.5rem; }
+
+  .movie-title-row {
+    border-bottom: 1px solid #1a1a1a;
+    padding-bottom: 1rem;
+  }
+
+  .movie-title-row h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    margin-bottom: 0.4rem;
+  }
+
+  .movie-imdb {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    background: #f5c518;
+    color: #000;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
+  }
+
+  /* Video player */
+  .video-wrap {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16/9;
+    background: #000;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid #222;
+  }
+
+  .video-wrap iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+
+  .no-embed {
+    width: 100%;
+    aspect-ratio: 16/9;
+    background: #111;
+    border-radius: 10px;
+    border: 1px dashed #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    color: #555;
+  }
+
+  .no-embed a {
+    background: #e50914;
+    color: #fff;
+    padding: 0.5rem 1.2rem;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: background 0.2s;
+  }
+
+  .no-embed a:hover { background: #c00; }
+
+  /* Meta table */
+  .meta-table {
+    background: #111;
+    border: 1px solid #1a1a1a;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .meta-row {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    border-bottom: 1px solid #1a1a1a;
+  }
+
+  .meta-row:last-child { border-bottom: none; }
+
+  .meta-label {
+    padding: 0.75rem 1rem;
+    font-size: 0.8rem;
+    color: #666;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    background: #0d0d0d;
+  }
+
+  .meta-value {
+    padding: 0.75rem 1rem;
+    font-size: 0.9rem;
+    word-break: break-all;
+  }
+
+  .meta-value a { color: #e50914; text-decoration: none; }
+  .meta-value a:hover { text-decoration: underline; }
+
+  .badge-yes { color: #4caf50; font-weight: 600; }
+  .badge-no  { color: #e57373; font-weight: 600; }
+
+  /* Actions */
+  .actions {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    padding: 0.5rem 1.2rem;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s;
+    border: none;
+    cursor: pointer;
+  }
+
+  .btn-edit { background: #1a1a1a; color: #ccc; border: 1px solid #333; }
+  .btn-edit:hover { color: #fff; border-color: #555; }
+
+  .btn-danger { background: #3a0000; color: #e57373; border: 1px solid #5a1a1a; }
+  .btn-danger:hover { background: #e50914; color: #fff; border-color: #e50914; }
+</style>
+
+<div class="movie-show">
+  <%= link_to "← Back to Movies", movies_path, class: "back-link" %>
+
+  <div class="movie-layout">
+
+    <%# Left: Poster %>
+    <div class="movie-poster-wrap">
+      <% if @movie.poster_url.present? %>
+        <img src="<%= @movie.poster_url %>" alt="<%= @movie.title %>" class="movie-poster">
+      <% else %>
+        <div class="movie-poster-placeholder">🎬</div>
+      <% end %>
+    </div>
+
+    <%# Right: Info %>
+    <div class="movie-info">
+
+      <div class="movie-title-row">
+        <h1><%= @movie.title.presence || "Untitled Movie" %></h1>
+        <span class="movie-imdb">IMDb <%= @movie.imdb_id %></span>
+      </div>
+
+      <%# Video Player %>
+      <% if @movie.is_embeddable? && @movie.youtube_embed_url.present? %>
+        <div class="video-wrap">
+          <iframe
+            src="<%= @movie.youtube_embed_url %>"
+            title="<%= @movie.title %>"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen>
+          </iframe>
+        </div>
+      <% elsif @movie.youtube_link.present? %>
+        <div class="no-embed">
+          <span>▶ Not embeddable — watch on YouTube</span>
+          <a href="<%= @movie.youtube_link %>" target="_blank">Open on YouTube →</a>
+        </div>
+      <% end %>
+
+      <%# Meta Info %>
+      <div class="meta-table">
+        <div class="meta-row">
+          <div class="meta-label">Title</div>
+          <div class="meta-value"><%= @movie.title.presence || "—" %></div>
+        </div>
+        <div class="meta-row">
+          <div class="meta-label">IMDb ID</div>
+          <div class="meta-value">
+            <a href="https://www.imdb.com/title/<%= @movie.imdb_id %>" target="_blank"><%= @movie.imdb_id %> ↗</a>
+          </div>
+        </div>
+        <div class="meta-row">
+          <div class="meta-label">YouTube</div>
+          <div class="meta-value">
+            <% if @movie.youtube_link.present? %>
+              <a href="<%= @movie.youtube_link %>" target="_blank"><%= @movie.youtube_link %> ↗</a>
+            <% else %>
+              —
+            <% end %>
+          </div>
+        </div>
+        <div class="meta-row">
+          <div class="meta-label">Embeddable</div>
+          <div class="meta-value">
+            <% if @movie.is_embeddable? %>
+              <span class="badge-yes">✓ Yes</span>
+            <% else %>
+              <span class="badge-no">✗ No</span>
+            <% end %>
+          </div>
+        </div>
+      </div>
+
+      <%# Actions %>
+      <div class="actions">
+        <%= link_to "✏ Edit", edit_movie_path(@movie), class: "btn btn-edit" %>
+        <%= button_to "✕ Delete", @movie, method: :delete, class: "btn btn-danger",
+            data: { turbo_confirm: "Are you sure you want to delete #{@movie.title}?" } %>
+      </div>
+
+    </div>
+  </div>
 </div>
+

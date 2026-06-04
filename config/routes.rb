@@ -14,10 +14,21 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :movies
+      resources :shows do
+        resources :seasons do
+          resources :episodes
+        end
+      end
     end
   end
 
+  # config/routes.rb
+  resources :shows do
+    resources :seasons do
+      resources :episodes
+    end
+  end
   # Defines the root path route ("/")
-  root "movies#index"
+  root "home#index"
 
 end
