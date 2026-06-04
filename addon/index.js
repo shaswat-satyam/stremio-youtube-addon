@@ -80,39 +80,62 @@ builder.defineCatalogHandler(async (args, cb) => {
   }
   return Promise.resolve({ metas: metas });
 });
-
 async function getStreamsFromDatabase(type) {
-  console.log("Base API Url:",BaseAPIurl);
-  console.log("Local API Url:",LocalAPIurl);
+  console.log("Base API Url:", BaseAPIurl);
+  console.log("Local API Url:", LocalAPIurl);
+  
   let response;
-  if (type == "series") {
-    response = await fetch(`${BaseAPIurl}/${type}`);
-  } else {
-    response = await fetch(`${BaseAPIurl}/${type}s`);
-  }
-  if (!response.ok) {
-    console.error("Failed to fetch streams:", response.statusText);
+  try {
+    if (type == "movie") {
+      response = await fetch(`${BaseAPIurl}/movies`);
+    } else if (type == "series") {
+      response = await fetch(`${BaseAPIurl}/shows`);
+    } else if (type == "tv") {
+      response = await fetch(`${BaseAPIurl}/tv`);
+    }
+
+    if (!response || !response.ok) {
+      console.error("Failed to fetch streams:", response?.statusText);
+      return [];
+    }
+
+    const result = await response.json();
+
+    if (type == "tv") {
+      return result.data.map((r) => ({
+        id: r.id,
+        name: r.name,
+        poster: r.poster || "https://www.lifeinabreakdown.com/wp-content/uploads/2023/01/older-television-on-spindly-legs-with-large-dials-image-licensed-via-canva-pro-and-copyright-via-Getty-Images-Signature-and-shaunl.jpg",
+        type: "tv",
+      }));
+    }
+
+    if (type == "movie") {
+      return result.map((r) => ({        // plain array, no .data
+        imdb_id: r.imdb_id,
+        name: r.title,
+        poster: r.poster_url,
+        youtube_link: r.youtube_link,
+        is_embeddable: r.is_embeddable,
+      }));
+    }
+
+    if (type == "series") {
+      return result.map((r) => ({        // plain array, no .data
+        imdb_id: r.imdb_id,
+        name: r.title,
+        poster: r.poster_url,
+      }));
+    }
+
+  } catch (err) {
+    console.error("getStreamsFromDatabase error:", err);
     return [];
   }
 
-  const result = await response.json();
-
-  if (type == "tv") {
-    return result.data.map((r) => ({
-      id: r.id,
-      poster: r.poster
-        ? r.poster
-        : "https://www.lifeinabreakdown.com/wp-content/uploads/2023/01/older-television-on-spindly-legs-with-large-dials-image-licensed-via-canva-pro-and-copyright-via-Getty-Images-Signature-and-shaunl.jpg",
-      type: "tv",
-      name: r.name,
-    }));
-  }
-  return result.data.map((r) => ({
-    youtube_id: r.youtube_id,
-    imdb_id: r.imdb_id,
-    name: r.name,
-  }));
+  return [];
 }
+
 async function getStreamsFromDatabaseForParticularId(id, type, name) {
   let response;
   if (type == "movie" || type == "series") {
