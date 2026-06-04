@@ -1,0 +1,24 @@
+current directory: /home/shaswat/repo/github/stremio-youtube-addon/.gems/ruby/3.3.0/gems/date-3.5.1/ext/date
+/nix/store/kj9xkgqsiz5h24k2f947z3p6h3mcn2hc-ruby-3.3.10/bin/ruby extconf.rb
+checking for rb_category_warn()... yes
+checking for timezone in time.h with  -Werror... yes
+checking for altzone in time.h with  -Werror... no
+creating Makefile
+
+current directory: /home/shaswat/repo/github/stremio-youtube-addon/.gems/ruby/3.3.0/gems/date-3.5.1/ext/date
+make DESTDIR\= sitearchdir\=./.gem.20260519-38356-646hrf sitelibdir\=./.gem.20260519-38356-646hrf clean
+
+current directory: /home/shaswat/repo/github/stremio-youtube-addon/.gems/ruby/3.3.0/gems/date-3.5.1/ext/date
+make DESTDIR\= sitearchdir\=./.gem.20260519-38356-646hrf sitelibdir\=./.gem.20260519-38356-646hrf
+compiling date_core.c
+compiling date_parse.c
+compiling date_strftime.c
+compiling date_strptime.c
+linking shared-object date_core.so
+
+current directory: /home/shaswat/repo/github/stremio-youtube-addon/.gems/ruby/3.3.0/gems/date-3.5.1/ext/date
+make DESTDIR\= sitearchdir\=./.gem.20260519-38356-646hrf sitelibdir\=./.gem.20260519-38356-646hrf install
+install -c -p -m 755 date_core.so ./.gem.20260519-38356-646hrf
+
+current directory: /home/shaswat/repo/github/stremio-youtube-addon/.gems/ruby/3.3.0/gems/date-3.5.1/ext/date
+make DESTDIR\= sitearchdir\=./.gem.20260519-38356-646hrf sitelibdir\=./.gem.20260519-38356-646hrf clean

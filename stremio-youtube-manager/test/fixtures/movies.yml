@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  imdb_id: MyString
+  youtube_link: MyString
+  is_embeddable: false
+
+two:
+  title: MyString
+  imdb_id: MyString
+  youtube_link: MyString
+  is_embeddable: false

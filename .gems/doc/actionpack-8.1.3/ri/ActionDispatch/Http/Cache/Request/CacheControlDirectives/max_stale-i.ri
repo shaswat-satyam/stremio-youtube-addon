@@ -1,0 +1,5 @@
+U:RDoc::Attr[iI"max_stale:ETI"KActionDispatch::Http::Cache::Request::CacheControlDirectives#max_stale;TI"R;T:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"ÏReturns the value of the max-stale directive.
+When max-stale is present with a value, returns that integer value.
+When max-stale is present without a value, returns true (unlimited staleness).
+When max-stale is not present, returns nil.;T:
+@fileI"&lib/action_dispatch/http/cache.rb;T:0@omit_headings_from_table_of_contents_below0F@I"AActionDispatch::Http::Cache::Request::CacheControlDirectives;TcRDoc::NormalClass0

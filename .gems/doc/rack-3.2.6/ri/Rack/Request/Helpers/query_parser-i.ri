@@ -1,0 +1,2 @@
+U:RDoc::Attr[iI"query_parser:ETI"(Rack::Request::Helpers#query_parser;TI"W;T:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"CAllow overriding the query parser that the receiver will use. ;TI"9By default Rack::Utils.default_query_parser is used.;T:
+@fileI"lib/rack/request.rb;T:0@omit_headings_from_table_of_contents_below0F@I"Rack::Request::Helpers;TcRDoc::NormalModule0

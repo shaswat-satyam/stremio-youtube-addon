@@ -1,0 +1,202 @@
+<% content_for :title, "Movies" %>
+
+<style>
+  .page-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+  }
+
+  .page-title {
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+  }
+
+  .page-title span { color: #e50914; }
+
+  .btn {
+    display: inline-block;
+    padding: 0.5rem 1.2rem;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+
+  .btn-primary {
+    background: #e50914;
+    color: #fff;
+  }
+
+  .btn-primary:hover { background: #c00; }
+
+  .movies-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .movie-card {
+    background: #111;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid #1a1a1a;
+    transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .movie-card:hover {
+    transform: translateY(-5px);
+    border-color: #e50914;
+    box-shadow: 0 8px 24px rgba(229, 9, 20, 0.15);
+  }
+
+  .movie-poster {
+    width: 100%;
+    aspect-ratio: 2/3;
+    object-fit: cover;
+    display: block;
+  }
+
+  .movie-poster-placeholder {
+    width: 100%;
+    aspect-ratio: 2/3;
+    background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+  }
+
+  .movie-body {
+    padding: 0.85rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .movie-title {
+    font-size: 0.95rem;
+    font-weight: 700;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .movie-imdb {
+    font-size: 0.75rem;
+    color: #f5c518;
+    font-weight: 600;
+  }
+
+  .movie-meta {
+    font-size: 0.75rem;
+    color: #666;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+  }
+
+  .embeddable-badge {
+    background: #1b5e20;
+    color: #a5d6a7;
+    font-size: 0.65rem;
+    padding: 0.1rem 0.4rem;
+    border-radius: 3px;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+
+  .movie-actions {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: auto;
+    padding-top: 0.6rem;
+    border-top: 1px solid #1a1a1a;
+  }
+
+  .action-link {
+    flex: 1;
+    text-align: center;
+    font-size: 0.78rem;
+    color: #888;
+    text-decoration: none;
+    padding: 0.3rem;
+    border-radius: 4px;
+    transition: all 0.15s;
+  }
+
+  .action-link:hover {
+    background: #1a1a1a;
+    color: #fff;
+  }
+
+  .action-link.youtube {
+    color: #e50914;
+  }
+
+  .action-link.youtube:hover {
+    background: #1a0000;
+    color: #ff4444;
+  }
+
+  .empty-state {
+    text-align: center;
+    padding: 4rem;
+    color: #444;
+    border: 1px dashed #222;
+    border-radius: 10px;
+  }
+
+  .empty-state a { color: #e50914; }
+</style>
+
+<div class="page-header">
+  <h1 class="page-title">🎬 <span>Movies</span></h1>
+  <%= link_to "+ New Movie", new_movie_path, class: "btn btn-primary" %>
+</div>
+
+<% if @movies.any? %>
+  <div class="movies-grid">
+    <% @movies.each do |movie| %>
+      <div class="movie-card">
+
+        <% if movie.poster_url.present? %>
+          <img src="<%= movie.poster_url %>" alt="<%= movie.title %>" class="movie-poster" loading="lazy">
+        <% else %>
+          <div class="movie-poster-placeholder">🎬</div>
+        <% end %>
+
+        <div class="movie-body">
+          <div class="movie-title"><%= movie.title.presence || "Untitled" %></div>
+          <div class="movie-imdb">⭐ <%= movie.imdb_id %></div>
+          <div class="movie-meta">
+            <% if movie.is_embeddable? %>
+              <span class="embeddable-badge">✓ Embeddable</span>
+            <% else %>
+              <span style="color: #555">✗ Not embeddable</span>
+            <% end %>
+          </div>
+
+          <div class="movie-actions">
+            <%= link_to "Details", movie, class: "action-link" %>
+            <% if movie.youtube_link.present? %>
+              <a href="<%= movie.youtube_link %>" target="_blank" class="action-link youtube">▶ YouTube</a>
+            <% end %>
+          </div>
+        </div>
+
+      </div>
+    <% end %>
+  </div>
+<% else %>
+  <div class="empty-state">
+    <p>No movies yet. <%= link_to "Add your first movie →", new_movie_path %></p>
+  </div>
+<% end %>

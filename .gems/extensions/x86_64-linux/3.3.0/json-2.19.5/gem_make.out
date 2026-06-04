@@ -1,0 +1,26 @@
+current directory: /home/shaswat/repo/github/stremio-youtube-addon/.gems/gems/json-2.19.5/ext/json/ext/parser
+/nix/store/kj9xkgqsiz5h24k2f947z3p6h3mcn2hc-ruby-3.3.10/bin/ruby extconf.rb
+checking for rb_enc_interned_str() in ruby/encoding.h... yes
+checking for rb_str_to_interned_str() in ruby.h... yes
+checking for rb_hash_new_capa() in ruby.h... yes
+checking for rb_hash_bulk_insert() in ruby.h... yes
+checking for RUBY_TYPED_EMBEDDABLE in ruby.h... yes
+checking for whether -std=c99 is accepted as CFLAGS... yes
+checking for x86intrin.h... yes
+checking for cpuid.h... yes
+creating Makefile
+
+current directory: /home/shaswat/repo/github/stremio-youtube-addon/.gems/gems/json-2.19.5/ext/json/ext/parser
+make DESTDIR\= sitearchdir\=./.gem.20260519-18191-6lscyr sitelibdir\=./.gem.20260519-18191-6lscyr clean
+
+current directory: /home/shaswat/repo/github/stremio-youtube-addon/.gems/gems/json-2.19.5/ext/json/ext/parser
+make DESTDIR\= sitearchdir\=./.gem.20260519-18191-6lscyr sitelibdir\=./.gem.20260519-18191-6lscyr
+compiling parser.c
+linking shared-object json/ext/parser.so
+
+current directory: /home/shaswat/repo/github/stremio-youtube-addon/.gems/gems/json-2.19.5/ext/json/ext/parser
+make DESTDIR\= sitearchdir\=./.gem.20260519-18191-6lscyr sitelibdir\=./.gem.20260519-18191-6lscyr install
+install -c -p -m 755 parser.so ./.gem.20260519-18191-6lscyr/json/ext
+
+current directory: /home/shaswat/repo/github/stremio-youtube-addon/.gems/gems/json-2.19.5/ext/json/ext/parser
+make DESTDIR\= sitearchdir\=./.gem.20260519-18191-6lscyr sitelibdir\=./.gem.20260519-18191-6lscyr clean

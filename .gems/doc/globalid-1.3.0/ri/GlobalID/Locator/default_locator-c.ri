@@ -1,0 +1,2 @@
+U:RDoc::Attr[iI"default_locator:ETI"'GlobalID::Locator::default_locator;TI"RW;T:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"DThe default locator used when no app-specific locator is found.;T:
+@fileI"lib/global_id/locator.rb;T:0@omit_headings_from_table_of_contents_below0T@I"GlobalID::Locator;TcRDoc::NormalModule0

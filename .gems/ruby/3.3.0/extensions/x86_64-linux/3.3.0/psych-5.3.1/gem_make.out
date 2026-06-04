@@ -1,0 +1,29 @@
+current directory: /home/shaswat/repo/github/stremio-youtube-addon/.gems/ruby/3.3.0/gems/psych-5.3.1/ext/psych
+/nix/store/kj9xkgqsiz5h24k2f947z3p6h3mcn2hc-ruby-3.3.10/bin/ruby extconf.rb
+checking for pkg-config for yaml-0.1... ["-I/nix/store/b3w48pf9616hy67ba5s0z9j6p7p19w9y-libyaml-0.2.5-dev/include ", "-L/nix/store/5by3i4053gppzf3ci7ygv1mj8gjhp6mk-libyaml-0.2.5/lib", "-lyaml"]
+creating Makefile
+
+current directory: /home/shaswat/repo/github/stremio-youtube-addon/.gems/ruby/3.3.0/gems/psych-5.3.1/ext/psych
+make DESTDIR\= sitearchdir\=./.gem.20260519-41988-fgif7e sitelibdir\=./.gem.20260519-41988-fgif7e clean
+cd libyaml && make clean
+/bin/sh: line 1: cd: libyaml: No such file or directory
+make: [Makefile:283: clean-so] Error 1 (ignored)
+
+current directory: /home/shaswat/repo/github/stremio-youtube-addon/.gems/ruby/3.3.0/gems/psych-5.3.1/ext/psych
+make DESTDIR\= sitearchdir\=./.gem.20260519-41988-fgif7e sitelibdir\=./.gem.20260519-41988-fgif7e
+compiling psych.c
+compiling psych_emitter.c
+compiling psych_parser.c
+compiling psych_to_ruby.c
+compiling psych_yaml_tree.c
+linking shared-object psych.so
+
+current directory: /home/shaswat/repo/github/stremio-youtube-addon/.gems/ruby/3.3.0/gems/psych-5.3.1/ext/psych
+make DESTDIR\= sitearchdir\=./.gem.20260519-41988-fgif7e sitelibdir\=./.gem.20260519-41988-fgif7e install
+install -c -p -m 755 psych.so ./.gem.20260519-41988-fgif7e
+
+current directory: /home/shaswat/repo/github/stremio-youtube-addon/.gems/ruby/3.3.0/gems/psych-5.3.1/ext/psych
+make DESTDIR\= sitearchdir\=./.gem.20260519-41988-fgif7e sitelibdir\=./.gem.20260519-41988-fgif7e clean
+cd libyaml && make clean
+/bin/sh: line 1: cd: libyaml: No such file or directory
+make: [Makefile:283: clean-so] Error 1 (ignored)

@@ -1,0 +1,2 @@
+U:RDoc::Attr[iI"json_encoder:ETI"&ActiveSupport::JSON::json_encoder;TI"R;T:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"NSets the encoder used by \Rails to encode Ruby objects into JSON strings ;TI":in +Object#to_json+ and +ActiveSupport::JSON.encode+.;T:
+@fileI"(lib/active_support/json/encoding.rb;T:0@omit_headings_from_table_of_contents_below0T@I"ActiveSupport::JSON;TcRDoc::NormalModule0

@@ -1,0 +1,32 @@
+<%= form_with(model: show) do |form| %>
+  <% if show.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(show.errors.count, "error") %> prohibited this show from being saved:</h2>
+
+      <ul>
+        <% show.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :title, style: "display: block" %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div>
+    <%= form.label :imdb_id, style: "display: block" %>
+    <%= form.text_field :imdb_id %>
+  </div>
+
+  <div>
+    <%= form.label :poster_url, style: "display: block" %>
+    <%= form.text_field :poster_url %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

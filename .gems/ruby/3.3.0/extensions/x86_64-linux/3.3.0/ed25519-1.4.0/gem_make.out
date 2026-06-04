@@ -1,0 +1,31 @@
+current directory: /home/shaswat/repo/github/stremio-youtube-addon/.gems/ruby/3.3.0/gems/ed25519-1.4.0/ext/ed25519_ref10
+/nix/store/kj9xkgqsiz5h24k2f947z3p6h3mcn2hc-ruby-3.3.10/bin/ruby extconf.rb
+checking for whether -Wall is accepted as CFLAGS... yes
+checking for whether -O3 is accepted as CFLAGS... yes
+checking for whether -pedantic is accepted as CFLAGS... yes
+checking for whether -std=c99 is accepted as CFLAGS... no
+creating Makefile
+
+current directory: /home/shaswat/repo/github/stremio-youtube-addon/.gems/ruby/3.3.0/gems/ed25519-1.4.0/ext/ed25519_ref10
+make DESTDIR\= sitearchdir\=./.gem.20260519-38356-wyx76h sitelibdir\=./.gem.20260519-38356-wyx76h clean
+
+current directory: /home/shaswat/repo/github/stremio-youtube-addon/.gems/ruby/3.3.0/gems/ed25519-1.4.0/ext/ed25519_ref10
+make DESTDIR\= sitearchdir\=./.gem.20260519-38356-wyx76h sitelibdir\=./.gem.20260519-38356-wyx76h
+compiling ed25519_ref10.c
+compiling fe.c
+compiling ge.c
+compiling keypair.c
+compiling open.c
+compiling sc_muladd.c
+compiling sc_reduce.c
+compiling sha512.c
+compiling sign.c
+compiling verify.c
+linking shared-object ed25519_ref10.so
+
+current directory: /home/shaswat/repo/github/stremio-youtube-addon/.gems/ruby/3.3.0/gems/ed25519-1.4.0/ext/ed25519_ref10
+make DESTDIR\= sitearchdir\=./.gem.20260519-38356-wyx76h sitelibdir\=./.gem.20260519-38356-wyx76h install
+install -c -p -m 755 ed25519_ref10.so ./.gem.20260519-38356-wyx76h
+
+current directory: /home/shaswat/repo/github/stremio-youtube-addon/.gems/ruby/3.3.0/gems/ed25519-1.4.0/ext/ed25519_ref10
+make DESTDIR\= sitearchdir\=./.gem.20260519-38356-wyx76h sitelibdir\=./.gem.20260519-38356-wyx76h clean

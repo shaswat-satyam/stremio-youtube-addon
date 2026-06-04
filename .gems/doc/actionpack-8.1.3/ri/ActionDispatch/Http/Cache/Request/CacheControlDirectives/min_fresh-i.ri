@@ -1,0 +1,4 @@
+U:RDoc::Attr[iI"min_fresh:ETI"KActionDispatch::Http::Cache::Request::CacheControlDirectives#min_fresh;TI"R;T:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"ÓReturns the value of the min-fresh directive.
+This directive indicates that the client is willing to accept a response
+whose freshness lifetime is no less than its current age plus the specified time in seconds.;T:
+@fileI"&lib/action_dispatch/http/cache.rb;T:0@omit_headings_from_table_of_contents_below0F@I"AActionDispatch::Http::Cache::Request::CacheControlDirectives;TcRDoc::NormalClass0

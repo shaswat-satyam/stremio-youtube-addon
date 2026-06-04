@@ -1,0 +1,2 @@
+U:RDoc::Attr[iI"original_filename:ETI"4Rack::Multipart::UploadedFile#original_filename;TI"R;T:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"FThe provided name of the file. This generally is the basename of ;TI"Mpath provided during initialization, but it can contain slashes if they ;TI"Iwere present in the filename argument when the instance was created.;T:
+@fileI"(lib/rack/multipart/uploaded_file.rb;T:0@omit_headings_from_table_of_contents_below0F@I""Rack::Multipart::UploadedFile;TcRDoc::NormalClass0

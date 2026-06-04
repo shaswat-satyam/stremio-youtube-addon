@@ -1,0 +1,24 @@
+<div id="<%= dom_id movie %>">
+  <div>
+    <strong>Title:</strong>
+    <%= movie.title %>
+  </div>
+
+  <div>
+    <strong>Imdb:</strong>
+    <%= movie.imdb_id %>
+  </div>
+
+  <div>
+    <strong>Youtube link:</strong>
+    <a href = "<%=movie.youtube_link%>"> 
+      <%= movie.youtube_link %>
+    </a>
+  </div>
+
+  <div>
+    <strong>Is embeddable:</strong>
+    <%= movie.is_embeddable %>
+  </div>
+
+</div>

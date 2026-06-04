@@ -1,0 +1,64 @@
+<header class="site-header">
+  <div class="header-inner">
+    <a href="/" class="logo">🎬 StreamVault</a>
+    <nav class="header-nav">
+      <%= link_to "Home", root_path, class: "nav-link #{controller_name == 'home' ? 'active' : ''}" %>
+      <%= link_to "Movies", movies_path, class: "nav-link #{controller_name == 'movies' ? 'active' : ''}" %>
+      <%= link_to "Shows", shows_path, class: "nav-link #{controller_name == 'shows' ? 'active' : ''}" %>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    background: #0a0a0a;
+    border-bottom: 1px solid #222;
+    padding: 0 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .header-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 60px;
+  }
+
+  .logo {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #fff;
+    text-decoration: none;
+    letter-spacing: -0.5px;
+  }
+
+  .header-nav {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .nav-link {
+    color: #888;
+    text-decoration: none;
+    padding: 0.4rem 1rem;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.2s;
+  }
+
+  .nav-link:hover {
+    color: #fff;
+    background: #1a1a1a;
+  }
+
+  .nav-link.active {
+    color: #fff;
+    background: #e50914;
+  }
+</style>
+

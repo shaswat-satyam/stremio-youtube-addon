@@ -1,0 +1,41 @@
+current directory: /home/shaswat/repo/github/stremio-youtube-addon/.gems/ruby/3.3.0/gems/puma-8.0.1/ext/puma_http11
+/nix/store/kj9xkgqsiz5h24k2f947z3p6h3mcn2hc-ruby-3.3.10/bin/ruby extconf.rb
+checking for pkg-config for openssl... ["-I/nix/store/dy64cxaygvmjfznysgxk501yds8jij6s-openssl-3.6.1-dev/include ", "-L/nix/store/wbyqkb1vpm41s4jb8pv0i9h4jv08xdrv-openssl-3.6.1/lib", "-lssl -lcrypto"]
+──── Using OpenSSL pkgconfig (openssl.pc) ────
+checking for openssl/bio.h... yes
+
+──── Below are yes for 1.0.2 & later ────
+checking for DTLS_method() in openssl/ssl.h... yes
+checking for SSL_CTX_set_session_cache_mode(NULL, 0) in openssl/ssl.h... yes
+
+──── Below are yes for 1.1.0 & later ────
+checking for TLS_server_method() in openssl/ssl.h... yes
+checking for SSL_CTX_set_min_proto_version(NULL, 0) in openssl/ssl.h... yes
+
+──── Below is yes for 1.1.0 and later, but isn't documented until 3.0.0 ────
+checking for SSL_CTX_set_dh_auto(NULL, 0) in openssl/ssl.h... yes
+
+──── Below is yes for 1.1.1 & later ────
+checking for SSL_CTX_set_ciphersuites(NULL, "") in openssl/ssl.h... yes
+
+──── Below is yes for 3.0.0 & later ────
+checking for SSL_get1_peer_certificate() in openssl/ssl.h... yes
+
+creating Makefile
+
+current directory: /home/shaswat/repo/github/stremio-youtube-addon/.gems/ruby/3.3.0/gems/puma-8.0.1/ext/puma_http11
+make DESTDIR\= sitearchdir\=./.gem.20260519-38356-1zp6li sitelibdir\=./.gem.20260519-38356-1zp6li clean
+
+current directory: /home/shaswat/repo/github/stremio-youtube-addon/.gems/ruby/3.3.0/gems/puma-8.0.1/ext/puma_http11
+make DESTDIR\= sitearchdir\=./.gem.20260519-38356-1zp6li sitelibdir\=./.gem.20260519-38356-1zp6li
+compiling http11_parser.c
+compiling mini_ssl.c
+compiling puma_http11.c
+linking shared-object puma/puma_http11.so
+
+current directory: /home/shaswat/repo/github/stremio-youtube-addon/.gems/ruby/3.3.0/gems/puma-8.0.1/ext/puma_http11
+make DESTDIR\= sitearchdir\=./.gem.20260519-38356-1zp6li sitelibdir\=./.gem.20260519-38356-1zp6li install
+install -c -p -m 755 puma_http11.so ./.gem.20260519-38356-1zp6li/puma
+
+current directory: /home/shaswat/repo/github/stremio-youtube-addon/.gems/ruby/3.3.0/gems/puma-8.0.1/ext/puma_http11
+make DESTDIR\= sitearchdir\=./.gem.20260519-38356-1zp6li sitelibdir\=./.gem.20260519-38356-1zp6li clean

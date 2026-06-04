@@ -1,0 +1,4 @@
+U:RDoc::Attr[iI"max_age:ETI"IActionDispatch::Http::Cache::Request::CacheControlDirectives#max_age;TI"R;T:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"²Returns the value of the max-age directive.
+This directive indicates that the client is willing to accept a response
+whose age is no greater than the specified number of seconds.;T:
+@fileI"&lib/action_dispatch/http/cache.rb;T:0@omit_headings_from_table_of_contents_below0F@I"AActionDispatch::Http::Cache::Request::CacheControlDirectives;TcRDoc::NormalClass0

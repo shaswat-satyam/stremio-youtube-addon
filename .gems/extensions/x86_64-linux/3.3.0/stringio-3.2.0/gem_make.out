@@ -1,0 +1,19 @@
+current directory: /home/shaswat/repo/github/stremio-youtube-addon/.gems/gems/stringio-3.2.0/ext/stringio
+/nix/store/kj9xkgqsiz5h24k2f947z3p6h3mcn2hc-ruby-3.3.10/bin/ruby extconf.rb
+checking for rb_io_mode_t in ruby/io.h... no
+creating Makefile
+
+current directory: /home/shaswat/repo/github/stremio-youtube-addon/.gems/gems/stringio-3.2.0/ext/stringio
+make DESTDIR\= sitearchdir\=./.gem.20260519-18191-inyb8f sitelibdir\=./.gem.20260519-18191-inyb8f clean
+
+current directory: /home/shaswat/repo/github/stremio-youtube-addon/.gems/gems/stringio-3.2.0/ext/stringio
+make DESTDIR\= sitearchdir\=./.gem.20260519-18191-inyb8f sitelibdir\=./.gem.20260519-18191-inyb8f
+compiling stringio.c
+linking shared-object stringio.so
+
+current directory: /home/shaswat/repo/github/stremio-youtube-addon/.gems/gems/stringio-3.2.0/ext/stringio
+make DESTDIR\= sitearchdir\=./.gem.20260519-18191-inyb8f sitelibdir\=./.gem.20260519-18191-inyb8f install
+install -c -p -m 755 stringio.so ./.gem.20260519-18191-inyb8f
+
+current directory: /home/shaswat/repo/github/stremio-youtube-addon/.gems/gems/stringio-3.2.0/ext/stringio
+make DESTDIR\= sitearchdir\=./.gem.20260519-18191-inyb8f sitelibdir\=./.gem.20260519-18191-inyb8f clean

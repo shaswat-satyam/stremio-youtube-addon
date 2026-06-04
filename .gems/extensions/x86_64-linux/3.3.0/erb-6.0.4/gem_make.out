@@ -1,0 +1,19 @@
+current directory: /home/shaswat/repo/github/stremio-youtube-addon/.gems/gems/erb-6.0.4/ext/erb/escape
+/nix/store/kj9xkgqsiz5h24k2f947z3p6h3mcn2hc-ruby-3.3.10/bin/ruby extconf.rb
+checking for rb_ext_ractor_safe() in ruby.h... yes
+creating Makefile
+
+current directory: /home/shaswat/repo/github/stremio-youtube-addon/.gems/gems/erb-6.0.4/ext/erb/escape
+make DESTDIR\= sitearchdir\=./.gem.20260519-18191-j0rqsh sitelibdir\=./.gem.20260519-18191-j0rqsh clean
+
+current directory: /home/shaswat/repo/github/stremio-youtube-addon/.gems/gems/erb-6.0.4/ext/erb/escape
+make DESTDIR\= sitearchdir\=./.gem.20260519-18191-j0rqsh sitelibdir\=./.gem.20260519-18191-j0rqsh
+compiling escape.c
+linking shared-object erb/escape.so
+
+current directory: /home/shaswat/repo/github/stremio-youtube-addon/.gems/gems/erb-6.0.4/ext/erb/escape
+make DESTDIR\= sitearchdir\=./.gem.20260519-18191-j0rqsh sitelibdir\=./.gem.20260519-18191-j0rqsh install
+install -c -p -m 755 escape.so ./.gem.20260519-18191-j0rqsh/erb
+
+current directory: /home/shaswat/repo/github/stremio-youtube-addon/.gems/gems/erb-6.0.4/ext/erb/escape
+make DESTDIR\= sitearchdir\=./.gem.20260519-18191-j0rqsh sitelibdir\=./.gem.20260519-18191-j0rqsh clean

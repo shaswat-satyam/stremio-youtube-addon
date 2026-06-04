@@ -1,0 +1,4 @@
+U:RDoc::Attr[iI"stale_if_error:ETI"PActionDispatch::Http::Cache::Request::CacheControlDirectives#stale_if_error;TI"R;T:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"×Returns the value of the stale-if-error directive.
+This directive indicates that the client is willing to accept a stale response
+if the check for a fresh one fails with an error for the specified number of seconds.;T:
+@fileI"&lib/action_dispatch/http/cache.rb;T:0@omit_headings_from_table_of_contents_below0F@I"AActionDispatch::Http::Cache::Request::CacheControlDirectives;TcRDoc::NormalClass0

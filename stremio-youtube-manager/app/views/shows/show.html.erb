@@ -1,0 +1,26 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @show %>
+
+<div>
+  <%= link_to "Edit this show", edit_show_path(@show) %> |
+  <%= link_to "Back to shows", shows_path %>
+
+  <%= button_to "Destroy this show", @show, method: :delete %>
+</div>
+<%# Seasons Section %>
+<div>
+  <h2>Seasons</h2>
+  <%= link_to "＋ Add Season", new_show_season_path(@show) %>
+</div>
+
+<% if @show.seasons.any? %>
+  <% @show.seasons.order(:season_number).each do |season| %>
+    <div>
+      <strong>Season <%= season.season_number %></strong>
+      <%= link_to "View", show_season_path(@show, season) %>
+    </div>
+  <% end %>
+<% else %>
+  <p>No seasons yet.</p>
+<% end %>

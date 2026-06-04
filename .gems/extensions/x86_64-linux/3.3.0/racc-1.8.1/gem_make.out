@@ -1,0 +1,18 @@
+current directory: /home/shaswat/repo/github/stremio-youtube-addon/.gems/gems/racc-1.8.1/ext/racc/cparse
+/nix/store/kj9xkgqsiz5h24k2f947z3p6h3mcn2hc-ruby-3.3.10/bin/ruby extconf.rb
+creating Makefile
+
+current directory: /home/shaswat/repo/github/stremio-youtube-addon/.gems/gems/racc-1.8.1/ext/racc/cparse
+make DESTDIR\= sitearchdir\=./.gem.20260519-17784-59v0mb sitelibdir\=./.gem.20260519-17784-59v0mb clean
+
+current directory: /home/shaswat/repo/github/stremio-youtube-addon/.gems/gems/racc-1.8.1/ext/racc/cparse
+make DESTDIR\= sitearchdir\=./.gem.20260519-17784-59v0mb sitelibdir\=./.gem.20260519-17784-59v0mb
+compiling cparse.c
+linking shared-object racc/cparse.so
+
+current directory: /home/shaswat/repo/github/stremio-youtube-addon/.gems/gems/racc-1.8.1/ext/racc/cparse
+make DESTDIR\= sitearchdir\=./.gem.20260519-17784-59v0mb sitelibdir\=./.gem.20260519-17784-59v0mb install
+install -c -p -m 755 cparse.so ./.gem.20260519-17784-59v0mb/racc
+
+current directory: /home/shaswat/repo/github/stremio-youtube-addon/.gems/gems/racc-1.8.1/ext/racc/cparse
+make DESTDIR\= sitearchdir\=./.gem.20260519-17784-59v0mb sitelibdir\=./.gem.20260519-17784-59v0mb clean

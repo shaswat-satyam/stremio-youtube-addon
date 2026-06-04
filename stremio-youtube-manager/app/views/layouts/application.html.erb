@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= content_for?(:title) ? yield(:title) : "StreamVault" %></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+    <style>
+      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+      body {
+        background: #0a0a0a;
+        color: #fff;
+        font-family: 'Georgia', serif;
+        min-height: 100vh;
+      }
+      .main-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+      }
+      .notice {
+        background: #1a3a1a;
+        color: #4caf50;
+        padding: 0.75rem 1rem;
+        border-radius: 6px;
+        margin-bottom: 1rem;
+        border: 1px solid #2d5a2d;
+      }
+      .alert {
+        background: #3a1a1a;
+        color: #e57373;
+        padding: 0.75rem 1rem;
+        border-radius: 6px;
+        margin-bottom: 1rem;
+        border: 1px solid #5a2d2d;
+      }
+    </style>
+  </head>
+  <body>
+    <%= render "shared/header" %>
+    <main class="main-content">
+      <% if notice.present? %>
+        <p class="notice"><%= notice %></p>
+      <% end %>
+      <% if alert.present? %>
+        <p class="alert"><%= alert %></p>
+      <% end %>
+      <%= yield %>
+    </main>
+  </body>
+</html>

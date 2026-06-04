@@ -1,0 +1,18 @@
+current directory: /home/shaswat/repo/github/stremio-youtube-addon/.gems/gems/websocket-driver-0.8.0/ext/websocket-driver
+/nix/store/kj9xkgqsiz5h24k2f947z3p6h3mcn2hc-ruby-3.3.10/bin/ruby extconf.rb
+creating Makefile
+
+current directory: /home/shaswat/repo/github/stremio-youtube-addon/.gems/gems/websocket-driver-0.8.0/ext/websocket-driver
+make DESTDIR\= sitearchdir\=./.gem.20260519-17784-p5ftse sitelibdir\=./.gem.20260519-17784-p5ftse clean
+
+current directory: /home/shaswat/repo/github/stremio-youtube-addon/.gems/gems/websocket-driver-0.8.0/ext/websocket-driver
+make DESTDIR\= sitearchdir\=./.gem.20260519-17784-p5ftse sitelibdir\=./.gem.20260519-17784-p5ftse
+compiling websocket_mask.c
+linking shared-object websocket_mask.so
+
+current directory: /home/shaswat/repo/github/stremio-youtube-addon/.gems/gems/websocket-driver-0.8.0/ext/websocket-driver
+make DESTDIR\= sitearchdir\=./.gem.20260519-17784-p5ftse sitelibdir\=./.gem.20260519-17784-p5ftse install
+install -c -p -m 755 websocket_mask.so ./.gem.20260519-17784-p5ftse
+
+current directory: /home/shaswat/repo/github/stremio-youtube-addon/.gems/gems/websocket-driver-0.8.0/ext/websocket-driver
+make DESTDIR\= sitearchdir\=./.gem.20260519-17784-p5ftse sitelibdir\=./.gem.20260519-17784-p5ftse clean

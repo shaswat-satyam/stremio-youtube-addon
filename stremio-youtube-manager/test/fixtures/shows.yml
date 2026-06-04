@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  imdb_id: MyString
+  poster_url: MyString
+
+two:
+  title: MyString
+  imdb_id: MyString
+  poster_url: MyString

@@ -1,0 +1,18 @@
+current directory: /home/shaswat/repo/github/stremio-youtube-addon/.gems/ruby/3.3.0/gems/bindex-0.8.1/ext/skiptrace
+/nix/store/kj9xkgqsiz5h24k2f947z3p6h3mcn2hc-ruby-3.3.10/bin/ruby extconf.rb
+creating Makefile
+
+current directory: /home/shaswat/repo/github/stremio-youtube-addon/.gems/ruby/3.3.0/gems/bindex-0.8.1/ext/skiptrace
+make DESTDIR\= sitearchdir\=./.gem.20260519-38356-kca03r sitelibdir\=./.gem.20260519-38356-kca03r clean
+
+current directory: /home/shaswat/repo/github/stremio-youtube-addon/.gems/ruby/3.3.0/gems/bindex-0.8.1/ext/skiptrace
+make DESTDIR\= sitearchdir\=./.gem.20260519-38356-kca03r sitelibdir\=./.gem.20260519-38356-kca03r
+compiling cruby.c
+linking shared-object skiptrace/internal/cruby.so
+
+current directory: /home/shaswat/repo/github/stremio-youtube-addon/.gems/ruby/3.3.0/gems/bindex-0.8.1/ext/skiptrace
+make DESTDIR\= sitearchdir\=./.gem.20260519-38356-kca03r sitelibdir\=./.gem.20260519-38356-kca03r install
+install -c -p -m 755 cruby.so ./.gem.20260519-38356-kca03r/skiptrace/internal
+
+current directory: /home/shaswat/repo/github/stremio-youtube-addon/.gems/ruby/3.3.0/gems/bindex-0.8.1/ext/skiptrace
+make DESTDIR\= sitearchdir\=./.gem.20260519-38356-kca03r sitelibdir\=./.gem.20260519-38356-kca03r clean
