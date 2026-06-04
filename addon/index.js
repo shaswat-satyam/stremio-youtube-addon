@@ -82,6 +82,8 @@ builder.defineCatalogHandler(async (args, cb) => {
 });
 
 async function getStreamsFromDatabase(type) {
+  console.log("Base API Url:",BaseAPIurl);
+  console.log("Local API Url:",LocalAPIurl);
   let response;
   if (type == "series") {
     response = await fetch(`${BaseAPIurl}/${type}`);
