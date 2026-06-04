@@ -1,0 +1,12 @@
+<% content_for :title, "Editing show" %>
+
+<h1>Editing show</h1>
+
+<%= render "form", show: @show %>
+
+<br>
+
+<div>
+  <%= link_to "Show this show", @show %> |
+  <%= link_to "Back to shows", shows_path %>
+</div>

@@ -1,0 +1,42 @@
+<%= form_with(model: episode) do |form| %>
+  <% if episode.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(episode.errors.count, "error") %> prohibited this episode from being saved:</h2>
+
+      <ul>
+        <% episode.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :season_id, style: "display: block" %>
+    <%= form.text_field :season_id %>
+  </div>
+
+  <div>
+    <%= form.label :imdb_id, style: "display: block" %>
+    <%= form.text_field :imdb_id %>
+  </div>
+
+  <div>
+    <%= form.label :episode_number, style: "display: block" %>
+    <%= form.number_field :episode_number %>
+  </div>
+
+  <div>
+    <%= form.label :youtube_link, style: "display: block" %>
+    <%= form.text_field :youtube_link %>
+  </div>
+
+  <div>
+    <%= form.label :is_embeddable, style: "display: block" %>
+    <%= form.checkbox :is_embeddable %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
